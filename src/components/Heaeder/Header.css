@@ -1,0 +1,24 @@
+
+.nav-link{
+  color: inherit;
+  text-align: center;
+  margin: 10px;
+}
+
+.navbar-brand img{
+  width: 55px;
+}
+
+.nav-link:hover{
+  
+  background-color: black;
+  border-radius: 10px;
+}
+
+.logo{
+  margin-right: 20px;
+}
+
+.navbar-brand{
+  font-size: 1.5rem;
+}
