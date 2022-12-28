@@ -80,3 +80,30 @@ h6{
 .item-especie{
   padding: 5px;
 }
+
+.img-genero{
+  height: 219px;
+}
+
+.img-especie{
+  height: 219px;
+  border-radius: 0px;
+  border: 0px;
+}
+
+
+.img-genero-individual{
+  width: 50%;
+  text-align: center;
+}
+
+.btn-container{
+  margin-top: 40px;
+}
+
+.contenedor-especie{
+  background-color: #212529;
+  min-height: 969px;
+  
+
+}

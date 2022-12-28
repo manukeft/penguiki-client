@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Routes, Route, Link, useParams } from "react-router-dom";
 
 import useFetch from "./useFetch";
-import logo from "./logo.svg";
 import "./App.css";
-import { Card, Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import Card from "./components/Card/Card.js";
 
 const Home = () => {
 
@@ -45,24 +45,26 @@ const Generos = () => {
     <>
       <div className="contenedor">
         <div className="container">
-          <h1 id="titulo">Géneros:</h1>
+          <h1 id="titulo">Géneros</h1>
           <div className="card-container d-flex">
             <div className="row row-cols-3 gap-4 justify-content-around row-cols-1 row-cols-sm-3 row-cols-md-4 px-5 px-sm-0">
               {generos.map((genero, i) => (
                 <div className="col">
-                  <div key={i} className="card">
-                    <img src={genero.imagen} alt={genero.nombre} />
-                    <div className="card-body">
-                      <h4 className="card-text">
-                        <Link
-                          to={"/genero/" + genero.nombre}
-                          style={{ textDecoration: "none", color:"white"}}
-                        >
-                          {genero.nombre}
-                        </Link>
-                      </h4>
+                  <Link
+                    to={"/genero/" + genero.nombre}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <div key={i} className="card">
+                      <img
+                        src={genero.imagen}
+                        alt={genero.nombre}
+                        className="img-genero"
+                      />
+                      <div className="card-body">
+                        <h4 className="card-text">{genero.nombre}</h4>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
@@ -75,60 +77,66 @@ const Generos = () => {
 
 const Genero = () => {
   const { genero } = useParams();
-  const especies = useFetch("http://localhost:8080/");
+  console.log(genero)
+  // const especies = useFetch("http://localhost:8080");
 
-  const generos = useFetch("http://localhost:8080/generos/");
+  const generos = useFetch("http://localhost:8080/genero/" + genero);
+  console.log(generos)
 
   return (
     <>
       <div class="contenedor">
         <div class="container text-light">
           {generos
-            .filter((generos) => generos.nombre === genero)
             .map((genero, i) => (
               <>
-                <h1 id="titulo">Género: {genero.nombre}</h1>
+                <main>
+                  <h1 id="titulo">Género: {genero.nombre}</h1>
+                </main>
+
                 <div className="row">
                   <div class="col-6">
-                    <p>{genero.descripcion}</p>
+                    <p className="descripcion-genero">{genero.descripcion}</p>
                     <h5>Especies del género: {genero.nombre}</h5>
+                    {genero.especies.map((especie) => (
+                      <Link
+                        to={"/especie/" + especie}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <li
+                          className="item-especie"
+                          style={{ listStyleType: "none" }}
+                        >
+                          {especie}
+                        </li>
+                      </Link>
+                    ))}
                   </div>
-                  <div class="col-6">
-                    <img src={genero.imagen} alt={genero.nombre} />
+                  <div class="col-6 text-center">
+                    <img src={genero.imagen} alt={genero.nombre} className="img-genero-individual" />
                   </div>
                 </div>
               </>
             ))}
-          <div class="especies">
-            <ul id="especies">
-              {especies
-                .filter((especies) => especies.genero === genero)
-                .map((especies) => (
-                  <>
-                    <li
-                      key={especies.genero}
-                      className="item-especie"
-                      style={{ listStyleType: "none" }}
-                    >
-                      <Link
-                        to={"/especie/" + especies.nombre}
-                        style={{ textDecoration: "none" }}
-                      >
-                        {especies.nombre}, ({especies.nombre2})
-                      </Link>
-                    </li>
-                  </>
-                ))}
-            </ul>
-            <p>
-              <Link to="/" style={{ textDecoration: "none" }}>
+          <div class="row text-center btn-container">
+            <div class="col-6">
+              <Link
+                to="/"
+                style={{ textDecoration: "none" }}
+                className="btn btn-secondary"
+              >
                 Regresar a la home
               </Link>
-              <br />
-              <Link to="/generos/" style={{ textDecoration: "none" }}>
+            </div>
+            <div class="col-6">
+              <Link
+                to="/generos/"
+                style={{ textDecoration: "none" }}
+                className="btn btn-secondary"
+              >
                 Regresar a generos
               </Link>
-            </p>
+            </div>
           </div>
         </div>
       </div>
@@ -143,7 +151,7 @@ const Especies = () => {
     <>
       <div class="contenedor">
         <Container>
-          <h1 id="titulo">Especies:</h1>
+          <h1 id="titulo">Especies</h1>
           <Row className="row-cols-3 gap-4 justify-content-around row-cols-1 row-cols-sm-3 row-cols-md-4 px-5 px-sm-0">
             {especies.map((especie, i) => (
               <Col>
@@ -151,15 +159,17 @@ const Especies = () => {
                   to={"/especie/" + especie.nombre}
                   style={{ textDecoration: "none" }}
                 >
-                  <Card key={i}>
-                    <Card.Img src="./logo512.png" alt={especie.nombre} />
+                  <div className="card p-0" key={i}>
+                    <Card.Img
+                      src={especie.imagen}
+                      alt={especie.nombre}
+                      className="img-especie"
+                    />
                     <Card.Body>
                       <Card.Text id="nombre">{especie.nombre}</Card.Text>
-                      <Card.Text id="nombre2">
-                        ({especie.nombre2})
-                      </Card.Text>
+                      <Card.Text id="nombre2">({especie.nombre2})</Card.Text>
                     </Card.Body>
-                  </Card>
+                  </div>
                 </Link>
               </Col>
             ))}
@@ -176,7 +186,7 @@ const Especie = () => {
 
   return (
     <>
-      <div className="contenedor ">
+      <div className="contenedor-especie">
         <div className="container text-light">
           {especies
             .filter((especie) => especie.nombre === nombre)

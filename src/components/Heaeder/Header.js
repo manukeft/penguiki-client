@@ -1,19 +1,12 @@
 import React from "react";
-import { Container, Navbar, NavbarBrand, Nav, NavLink } from "react-bootstrap";
+import { Container, Navbar, NavbarBrand, Nav } from "react-bootstrap";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 // import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => (
-  
-  <Navbar
-    collapseOnSelect
-    expand="md"
-    bg="dark"
-    variant="dark"
-    fixed="top"
-  >
+  <Navbar collapseOnSelect expand="md" bg="dark" variant="dark" fixed="top">
     <Container>
       <NavbarBrand href="/">
         <img src="./logo512.png" alt="" className="logo" />
@@ -27,8 +20,7 @@ const Header = () => (
         <span className="navbar-toggler-icon"></span>
       </NavbarToggle>
 
-      
-       <NavbarCollapse className="collapse navbar-collapse" id="#mainNav">
+      <NavbarCollapse className="collapse navbar-collapse" id="#mainNav">
         <Nav className="nav ms-auto flex-column flex-md-row">
           <Nav.Link href="/" className="nav-link text-light active">
             Inicio
@@ -40,7 +32,7 @@ const Header = () => (
             Especies
           </Nav.Link>
         </Nav>
-      </NavbarCollapse> 
+      </NavbarCollapse>
     </Container>
   </Navbar>
 );
