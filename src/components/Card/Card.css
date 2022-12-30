@@ -1,0 +1,33 @@
+.card{
+  border-radius: 0%;
+  background-color: #212529;
+  border: 0;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.card:hover{
+  background-color: black;
+}
+
+.card-body{
+  padding: 10px;
+  text-align: center;
+}
+
+.imagen-card{
+  height: 220px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.nombre-cientifico{
+  font-size: 1.5rem;
+  padding: 5px;
+  color: white;
+}
+
+.nombre-comun{
+  color: cadetblue;
+  font-size: 1rem;
+}

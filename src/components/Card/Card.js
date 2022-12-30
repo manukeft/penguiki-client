@@ -1,14 +1,21 @@
 import React from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <div key='s' className="card">
-      {/* <img src={genero.imagen} alt={genero.nombre} className="img-genero" />
-      <div className="card-body">
-        <h4 className="card-text">{genero.nombre}</h4>
-      </div> */}
-    </div>
+    <>
+      <div key={props.id} className="card">
+        <img
+          src={props.imagen}
+          alt={props.nombre}
+          className="imagen img-responsive"
+        />
+        <div className="card-body">
+          <h4 className="card-text nombre-cientifico">{props.nombre}</h4>
+          <p className="card-text nombre-comun">{props.nombre2}</p>
+        </div>
+      </div>
+    </>
   );
 };
 

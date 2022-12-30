@@ -1,0 +1,75 @@
+.contenedor-principal{
+  background-image: url(../../assets/img/fondo2.jpg);
+  background-size: cover;
+  background-position: 100% 50%;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.contenedor{
+  padding-top: 80px;
+  padding-left: 420px;
+}
+
+.titulo-home{
+  color: #212529;
+  font-size: 4em;
+  padding-top: 80px;
+  padding-bottom: 20px;
+}
+
+.container-p{
+  max-width: 50%;
+}
+
+@media (max-width: 1700px) {
+  .contenedor{
+    background-color: #212529;
+    opacity: 80%;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+  }
+
+  .titulo-home{
+    margin-top: 100px;
+    color: white;
+  }
+
+  .container-p{
+    max-width: 100%;
+    color: white;
+    font-size: 1.5em;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenedor{
+    width: 80%;
+    
+  }
+
+  .titulo-home{
+    margin-top: 50px;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .contenedor{
+    width: 90%;
+    padding: 20px;
+    border-radius: 0px;
+  }
+
+  .titulo-home{
+    margin-top: 30px;
+  }
+
+  .container-p{
+    margin: 0 auto;
+    padding: 10px;
+  }
+}
